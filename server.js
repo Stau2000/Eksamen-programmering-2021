@@ -14,3 +14,16 @@ const PORT = 4000;
 app.listen(PORT, () => {
 console.log(`Server is listening on http://localhost:${PORT}`)
 });
+
+//_______________________________________________________________________
+//Forside
+app.get("/", (req,res) => {
+    res.status(200).json("FORSIDE")
+});
+
+//_______________________________________________________________________
+
+//Log ind
+app.get("/log_ind",  (req, res) => {
+    res.status(200).json("LOG IND")
+})
