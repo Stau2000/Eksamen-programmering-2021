@@ -1,0 +1,21 @@
+hvad er lavet og hvad ønskes gjort:
+
+1. Få sat server.js op, samt selve serveren (CHECK)
+
+2. Lav en topbar, til forsiden (CHECK)
+
+3. Kunne være lækkert med en topbar på de forskllige URL'er
+   så man kan navigere lettere rundt på siden frem for at 
+   ændre på URL'en manuelt. så slipper man også for simple
+   skrivefejl (MANGLER)
+
+2. Lav en database, som gemmer JSON filer. Her skal der
+   kunne være flere jsonfiler som skal kunne gemme data
+   fra forskellige data typer (MANGLER)
+   eks:
+   -profiler med data om hver profil
+   -annoncer med data om hver annonce 
+
+4. Begynd på "Opret profil kravet"
+   Her skal man fra clienten kunne oprette en profil, som
+   bliver gemt på hjemmesidens database
