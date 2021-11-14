@@ -7,7 +7,7 @@ hvad er lavet og hvad ønskes gjort:
 3. Kunne være lækkert med en topbar på de forskllige URL'er
    så man kan navigere lettere rundt på siden frem for at 
    ændre på URL'en manuelt. så slipper man også for simple
-   skrivefejl (MANGLER)
+   skrivefejl i URL (Opret bruger: CHECK)
 
 4. Lav en database, som gemmer JSON filer. Her skal der
    kunne være flere jsonfiler som skal kunne gemme data

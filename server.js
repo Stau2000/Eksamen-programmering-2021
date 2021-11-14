@@ -2,6 +2,9 @@
 
 //SERVER
 
+//Filesystem
+const fs = require("fs")
+
 // Serveren lytter til port ****
 const express = require("express");
 
@@ -46,7 +49,24 @@ app.get("/log_ind",  (req, res) => {
 //Opret profil
 //vi skal bruge en POST til at oprette en bruger:
 //(skal lige finde ud af hvordan den skal laves)
-//app.post("/opret_bruger")
+app.post("/opret_bruger/:email-:password-:name-:address-:phonenumber", (req, res) => {
+    const loadedProfiles = loadProfileDatabase()
+    
+    loadedProfiles.lastProfileID++;
+    const newprofile = {
+        id:`p${loadedProfiles.lastProfileID}`,
+        email: req.params.email,
+        password: req.params.password,
+        name: req.params.name,
+        address: req.params.address,
+        phonenumber: req.params.phonenumber
+    }
+    loadedProfiles.profiles.push(newPeofile)
+
+    console.log(loadedProfiles)
+
+    saveProfileDatabase(loadedProfiles)
+})
 
 //________________________________________________________________________
 
@@ -103,3 +123,15 @@ app.get("/kontakt", (req, res) => {
 app.get("/om_os", (req, res) => {
     res.status(200).json("om os")
 })
+
+//Helpers
+const loadProfileDatabase = () => {
+    const rawdata = fs.readFileSync("profiles.json");
+    const profiles = JSON.parse(rawdata);
+    return profiles
+}
+
+const saveProfileDatabase = (changedProfiles) => {
+    const data = JSON.stringify(changedProfiles);
+    fs.writeFileSync("profiles.json", data);
+}
