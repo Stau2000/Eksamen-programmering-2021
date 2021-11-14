@@ -9,13 +9,16 @@ hvad er lavet og hvad ønskes gjort:
    ændre på URL'en manuelt. så slipper man også for simple
    skrivefejl (MANGLER)
 
-2. Lav en database, som gemmer JSON filer. Her skal der
+4. Lav en database, som gemmer JSON filer. Her skal der
    kunne være flere jsonfiler som skal kunne gemme data
    fra forskellige data typer (MANGLER)
    eks:
    -profiler med data om hver profil
    -annoncer med data om hver annonce 
 
-4. Begynd på "Opret profil kravet"
+5. Begynd på "Opret profil kravet"
    Her skal man fra clienten kunne oprette en profil, som
    bliver gemt på hjemmesidens database
+
+
+   næste gang: lav 3, 4, 5
