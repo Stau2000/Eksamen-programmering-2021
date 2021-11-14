@@ -53,7 +53,7 @@ app.post("/opret_bruger/:email-:password-:name-:address-:phonenumber", (req, res
     const loadedProfiles = loadProfileDatabase()
     
     loadedProfiles.lastProfileID++;
-    const newprofile = {
+    const newProfile = {
         id:`p${loadedProfiles.lastProfileID}`,
         email: req.params.email,
         password: req.params.password,
@@ -61,7 +61,7 @@ app.post("/opret_bruger/:email-:password-:name-:address-:phonenumber", (req, res
         address: req.params.address,
         phonenumber: req.params.phonenumber
     }
-    loadedProfiles.profiles.push(newPeofile)
+    loadedProfiles.profiles.push(newProfile)
 
     console.log(loadedProfiles)
 
