@@ -48,8 +48,7 @@ app.get("/log_ind",  (req, res) => {
 
 //Opret profil
 //vi skal bruge en POST til at oprette en bruger:
-//(skal lige finde ud af hvordan den skal laves)
-app.post("/opret_bruger/:email-:password-:name-:address-:phonenumber", (req, res) => {
+app.post("/opret_bruger/:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
     const loadedProfiles = loadProfileDatabase()
     
     loadedProfiles.lastProfileID++;
@@ -58,15 +57,16 @@ app.post("/opret_bruger/:email-:password-:name-:address-:phonenumber", (req, res
         email: req.params.email,
         password: req.params.password,
         name: req.params.name,
+        city: req.params.city,
         address: req.params.address,
         phonenumber: req.params.phonenumber
-    }
-    loadedProfiles.profiles.push(newProfile)
+    };
+    loadedProfiles.profiles.push(newProfile);
 
-    console.log(loadedProfiles)
+    console.log(loadedProfiles);
 
-    saveProfileDatabase(loadedProfiles)
-})
+    saveProfileDatabase(loadedProfiles);
+});
 
 //________________________________________________________________________
 
@@ -95,8 +95,27 @@ vi skal bruge en post til at oprette en annonce
 (Skal også finde ud af hvordan dette gøres)
 TANKE: hvis opret bruger løses er det samme tilgang som skal bruges her 
 */
-//app.post("/opret annonce")
+app.post("/opret_annonce/:email-:name-:city-:category-:image-:price-:description", (req, res) => {
+    const loadedGoods = loadGoodDatabase()
+    
+    loadedGoods.lastGoodID++;
+    const newGood = {
+        id:`g${loadedGoods.lastGoodID}`,
+        email: req.params.email,
+        name: req.params.name,
+        city: req.params.city,
+        category: req.params.category,
+        image: req.params.image,
+        price: req.params.price,
+        description: req.params.description
+    };
 
+    loadedGoods.goods.push(newGood);
+
+    console.log(loadedGoods);
+
+    saveGoodDatabase(loadedGoods);
+});
 //________________________________________________________________________
 
 //Opdatere annonce
@@ -125,6 +144,7 @@ app.get("/om_os", (req, res) => {
 })
 
 //Helpers
+//database: profiler
 const loadProfileDatabase = () => {
     const rawdata = fs.readFileSync("profiles.json");
     const profiles = JSON.parse(rawdata);
@@ -134,4 +154,16 @@ const loadProfileDatabase = () => {
 const saveProfileDatabase = (changedProfiles) => {
     const data = JSON.stringify(changedProfiles);
     fs.writeFileSync("profiles.json", data);
+}
+
+//database: varer
+const loadGoodDatabase = () => {
+    const rawdata = fs.readFileSync("goods.json");
+    const goods = JSON.parse(rawdata);
+    return goods
+}
+
+const saveGoodDatabase = (changedGoods) => {
+    const data = JSON.stringify(changedGoods);
+    fs.writeFileSync("goods.json", data);
 }
