@@ -13,12 +13,16 @@ hvad er lavet og hvad ønskes gjort:
    kunne være flere jsonfiler som skal kunne gemme data
    fra forskellige data typer (MANGLER)
    eks:
-   -profiler med data om hver profil
-   -annoncer med data om hver annonce 
+   -profiler med data om hver profil (CHECK)
+   -annoncer med data om hver annonce (FIND UD AF HVORFOR DETTE IKKE VIRKER)
 
 5. Begynd på "Opret profil kravet"
    Her skal man fra clienten kunne oprette en profil, som
-   bliver gemt på hjemmesidens database
+   bliver gemt på hjemmesidens database (CHECK)
 
+6. Begynd på "opret annonce kravet"
+   her skal man fra clienten kunne oprette en annonce, som bliver gemt på hjemmesidens database
+
+7. Begynd på "log ind kravet"
 
    næste gang: lav 3, 4, 5

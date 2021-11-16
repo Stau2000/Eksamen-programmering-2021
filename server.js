@@ -95,6 +95,9 @@ vi skal bruge en post til at oprette en annonce
 (Skal også finde ud af hvordan dette gøres)
 TANKE: hvis opret bruger løses er det samme tilgang som skal bruges her 
 */
+/*app.get('/opret_annonce', (req, res) => {
+    res.sendFile(__dirname + "/public/opret_vare/index.html");
+  });*/
 app.post("/opret_annonce/:email-:name-:city-:category-:image-:price-:description", (req, res) => {
     const loadedGoods = loadGoodDatabase()
     
@@ -158,12 +161,12 @@ const saveProfileDatabase = (changedProfiles) => {
 
 //database: varer
 const loadGoodDatabase = () => {
-    const rawdata = fs.readFileSync("goods.json");
-    const goods = JSON.parse(rawdata);
+    const rawGoodData = fs.readFileSync("goods.json");
+    const goods = JSON.parse(rawGoodData);
     return goods
 }
 
 const saveGoodDatabase = (changedGoods) => {
-    const data = JSON.stringify(changedGoods);
-    fs.writeFileSync("goods.json", data);
+    const dataGood = JSON.stringify(changedGoods);
+    fs.writeFileSync("goods.json", dataGood);
 }
