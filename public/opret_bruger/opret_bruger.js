@@ -8,10 +8,10 @@ const address = document.getElementById("address");
 const phonenumber = document.getElementById("phonenumber");
 
 const init = () => {
-    submitButton.addEventListener("click", createUser);
+    submitButton.addEventListener("click", createGood);
 }
 
-const createUser = (e) => {
+const createGood = (e) => {
     e.preventDefault()
     console.log(address.value)
     fetch(`http://localhost:4000/opret_bruger/${email.value}-${password.value}-${username.value}-${city.value}-${address.value}-${phonenumber.value}`, {

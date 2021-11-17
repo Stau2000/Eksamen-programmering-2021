@@ -98,7 +98,7 @@ TANKE: hvis opret bruger løses er det samme tilgang som skal bruges her
 /*app.get('/opret_annonce', (req, res) => {
     res.sendFile(__dirname + "/public/opret_vare/index.html");
   });*/
-app.post("/opret_annonce/:email-:name-:city-:category-:image-:price-:description", (req, res) => {
+app.post("/opret_annonce/:email-:username-:city-:category-:image-:price-:description", (req, res) => {
     const loadedGoods = loadGoodDatabase()
     
     loadedGoods.lastGoodID++;
