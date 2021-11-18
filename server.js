@@ -28,8 +28,23 @@ app.get("/", (req,res) => {
 //_______________________________________________________________________
 
 //Log ind
-app.get("/log_ind",  (req, res) => {
-    res.status(200).json("LOG IND")
+app.post("/log_ind",  (req, res) => {
+const profiles = {
+    email: req.params.email,
+    passwped: req.params.password
+}
+const found = findProfile(profiles);
+    if (found) {
+        if (profile.password == found.password){
+            res.status(200).send(true)
+        }
+        else{
+            res.status(401).send(false)
+        }
+    }
+    else {
+        res.status(404).send(false)
+    }
 });
 
 //________________________________________________________________________
@@ -170,3 +185,7 @@ const saveGoodDatabase = (changedGoods) => {
     const dataGood = JSON.stringify(changedGoods);
     fs.writeFileSync("goods.json", dataGood);
 }
+
+findProfile = (profiles) => {
+    return this.profiles.find((x) => profiles.email == x.email);
+};

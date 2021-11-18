@@ -17,5 +17,6 @@ const createGood = (e) => {
     fetch(`http://localhost:4000/opret_bruger/${email.value}-${password.value}-${username.value}-${city.value}-${address.value}-${phonenumber.value}`, {
         method: "POST"
     })
+    
 }
 init ()
