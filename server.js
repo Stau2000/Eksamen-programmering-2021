@@ -1,4 +1,4 @@
-
+let logged_in = false
 
 //SERVER
 
@@ -28,8 +28,34 @@ app.get("/", (req,res) => {
 //_______________________________________________________________________
 
 //Log ind
-app.get("/log_ind",  (req, res) => {
-    res.status(200).json("LOG IND")
+app.post("/log_ind/:email-:password",  (req, res) => {
+    const loginInfo = {
+        email: req.params.email,
+        password: req.params.password
+    }
+    const loadedProfiles = loadProfileDatabase()
+
+    const profileWithEmail = loadedProfiles.profiles.find((x) => loginInfo.email == x.email);
+
+    if (profileWithEmail) {
+        if (loginInfo.password == profileWithEmail.password){
+            console.log("LOGGED IN")
+            logged_in = true
+            res.status(200).send(true)
+        }
+        else{
+            console.log("ERROR: Forkert password")
+            res.status(401).send(false)
+        }
+    }
+    else {
+        console.log("ERROR: Email findes ikke")
+        // Vi kunne returnere 404 for at sige at der ikke er nogen profiler der matcher den email,
+        // men det ville være et sikkerhedsbrud, da en hacker dermed kunne bruteforce hvilke emails er oprettet.
+        // Derfor returnerer vi også 401, så vi i frontend bare kan sige "forkert login" uafhængigt af om email var korrekt eller ej:
+        // "Enten dit password eller email er forkert"
+        res.status(401).send(false)
+    }
 });
 
 //________________________________________________________________________
@@ -134,17 +160,6 @@ app.post("/opret_annonce/:email-:name-:city-:category-:image-:price-:description
 //
 
 //________________________________________________________________________
-
-//dette er ikke et krav, men kunne være nice med en knap til disse
-//KONTAKT 
-app.get("/kontakt", (req, res) => {
-    res.status(200).json("kontakt")
-});
-
-// OM OS
-app.get("/om_os", (req, res) => {
-    res.status(200).json("om os")
-})
 
 //Helpers
 //database: profiler
