@@ -41,7 +41,7 @@ app.post("/log_ind/:email-:password",  (req, res) => {
         if (loginInfo.password == profileWithEmail.password){
             console.log("LOGGED IN")
             logged_in = true
-            res.status(200).send(true)
+            res.status(200).send(profileWithEmail)
         }
         else{
             console.log("ERROR: Forkert password")

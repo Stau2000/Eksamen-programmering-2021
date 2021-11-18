@@ -10,6 +10,18 @@ const login = (e) => {
     console.log(email.value)
     fetch(`http://localhost:4000/log_ind/${email.value}-${password.value}`, {
         method: "POST"
+    }).then((response) => {
+        if (response.status == 200) {
+            console.log("LOGGED IN!");
+           // window.location.replace("http://localhost:4000/");
+           return response.json();
+        }
+        else {
+            throw `error with status ${response.status}`;
+        }
+    })
+    .then(content => {
+        console.log(content)
     })
 }
 init ()
