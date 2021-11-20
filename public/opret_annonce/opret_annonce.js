@@ -14,7 +14,7 @@ const init = () => {
 
 const createGood = (e) => {
     e.preventDefault()
-    console.log(username.value)
+    console.log(description.value)
     fetch(`http://localhost:4000/opret_annonce/${email.value}-${username.value}-${city.value}-${category.value}-${image.value}-${price.value}-${description.value}`, {
         method: "POST"
     })

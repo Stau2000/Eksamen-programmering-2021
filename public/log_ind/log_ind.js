@@ -13,7 +13,6 @@ const login = (e) => {
     }).then((response) => {
         if (response.status == 200) {
             console.log("LOGGED IN!");
-           // window.location.replace("http://localhost:4000/");
            return response.json();
         }
         else {
@@ -22,6 +21,13 @@ const login = (e) => {
     })
     .then(content => {
         console.log(content)
+        localStorage.setItem("email", content.email);
+        localStorage.setItem("name", content.name);
+        localStorage.setItem("phonenumber", content.phonenumber);
+        localStorage.setItem("city", content.city);
+        localStorage.setItem("id", content.id);
+        
+        window.location.replace("http://localhost:4000/");
     })
 }
 init ()

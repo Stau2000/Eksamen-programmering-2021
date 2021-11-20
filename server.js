@@ -41,7 +41,7 @@ app.post("/log_ind/:email-:password",  (req, res) => {
         if (loginInfo.password == profileWithEmail.password){
             console.log("LOGGED IN")
             logged_in = true
-            res.status(200).send(profileWithEmail)
+            res.status(200).send(true)
         }
         else{
             console.log("ERROR: Forkert password")
@@ -58,17 +58,21 @@ app.post("/log_ind/:email-:password",  (req, res) => {
     }
 });
 
-//________________________________________________________________________
-
-//Forblive logget ind
-// vi skal nok bruge et put request til at kunne forblive logget ind
-
-//app.put("/forbliv logget ind")
 
 //________________________________________________________________________
 
 //Log ud
-//ved ikke helt hvordan dette skal kunne gøres endnu
+app.post("/log_ud", (res, req) => {
+    const loggedOut = true
+    
+    if (loggedOut){
+        res.status(200).send(true)
+    }
+    else{
+        console.log("ERROR: kunne ikke logge ud")
+        res.status(404).send(false)
+    }
+});
 
 //________________________________________________________________________
 
