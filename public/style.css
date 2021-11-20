@@ -39,3 +39,19 @@ html.body{
     margin-right: 16px;
     font-size: 17px;
   }
+
+body.logged_in #login{
+  display: none;
+}
+body.logged_in #opret{
+  display: none;
+}
+body.logged_out #logout{
+  display: none;
+}
+body.logged_out #create_ad{
+  display: none;
+}
+body.logged_out #myProfile{
+  display: none;
+}
