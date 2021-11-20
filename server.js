@@ -193,3 +193,7 @@ const saveGoodDatabase = (changedGoods) => {
 findProfile = (profiles) => {
     return this.profiles.find((x) => profiles.email == x.email);
 };
+
+deleteProfile = (profiles) => {
+    
+}
