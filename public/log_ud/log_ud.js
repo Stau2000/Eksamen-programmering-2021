@@ -11,7 +11,7 @@ const logOut = (e) => {
     }).then(content => {
         console.log(content)
         localStorage.removeItem("email", content.email);
-        localStorage.removeItem("name", content.name);
+        localStorage.removeItem("username", content.username);
         localStorage.removeItem("phonenumber", content.phonenumber);
         localStorage.removeItem("city", content.city);
         localStorage.removeItem("id", content.id);

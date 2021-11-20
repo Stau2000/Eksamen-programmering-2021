@@ -1,5 +1,5 @@
 const content = document.getElementById("content");
-
+/*
 const getUsers = () => {
     fetch(`http://localhost:4000/brugere`, {
         method: 'GET'
@@ -12,6 +12,8 @@ const getUsers = () => {
 }
 
 getUsers()
+*/
+
 console.log(localStorage.getItem("email"))
 
 const email = localStorage.getItem("email")

@@ -20,9 +20,9 @@ const login = (e) => {
         }
     })
     .then(content => {
-        console.log(content)
+        console.log(content.email)
         localStorage.setItem("email", content.email);
-        localStorage.setItem("name", content.name);
+        localStorage.setItem("username", content.username);
         localStorage.setItem("phonenumber", content.phonenumber);
         localStorage.setItem("city", content.city);
         localStorage.setItem("id", content.id);

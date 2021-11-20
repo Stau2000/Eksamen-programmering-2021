@@ -80,7 +80,7 @@ app.post("/log_ud", (res, req) => {
 //vi skal bruge en POST til at oprette en bruger:
 app.post("/opret_bruger/:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
     const loadedProfiles = loadProfileDatabase()
-    
+
     loadedProfiles.lastProfileID++;
     const newProfile = {
         id:`p${loadedProfiles.lastProfileID}`,
@@ -91,6 +91,7 @@ app.post("/opret_bruger/:email-:password-:name-:city-:address-:phonenumber", (re
         address: req.params.address,
         phonenumber: req.params.phonenumber
     };
+
     loadedProfiles.profiles.push(newProfile);
 
     console.log(loadedProfiles);
@@ -116,7 +117,11 @@ app.get("/min_profil", (req,res) => {
 
 //Slette profil
 //vi skal bruge et delete request til at slette profilen
-//app.delete("/slet_profil", (req, res) => {});
+app.delete("/slet_profil", (req, res) => {
+    res.status(200).send("her skal man kunne slette en bruger")
+});
+
+
 //________________________________________________________________________
 
 /*
@@ -135,7 +140,7 @@ app.post("/opret_annonce/:email-:username-:city-:category-:image-:price-:descrip
     const newGood = {
         id:`g${loadedGoods.lastGoodID}`,
         email: req.params.email,
-        name: req.params.name,
+        username: req.params.username,
         city: req.params.city,
         category: req.params.category,
         image: req.params.image,
@@ -193,7 +198,3 @@ const saveGoodDatabase = (changedGoods) => {
 findProfile = (profiles) => {
     return this.profiles.find((x) => profiles.email == x.email);
 };
-
-deleteProfile = (profiles) => {
-    
-}
