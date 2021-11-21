@@ -41,7 +41,7 @@ app.post("/log_ind/:email-:password",  (req, res) => {
         if (loginInfo.password == profileWithEmail.password){
             console.log("LOGGED IN")
             logged_in = true
-            res.status(200).send(true)
+            res.status(200).send(profileWithEmail)
         }
         else{
             console.log("ERROR: Forkert password")
@@ -118,8 +118,17 @@ app.get("/min_profil", (req,res) => {
 //Slette profil
 //vi skal bruge et delete request til at slette profilen
 app.delete("/slet_profil", (req, res) => {
-    
+
     const loadedProfiles = loadProfileDatabase()
+    const deleteInfo = {
+        id:`p${loadedProfiles.lastProfileID}`,
+        email: req.params.email,
+        password: req.params.password,
+        name: req.params.name,
+        city: req.params.city,
+        address: req.params.address,
+        phonenumber: req.params.phonenumber
+    };
 
     const profileWithEmail = loadedProfiles.profiles.filter((x) => x.email != deleteInfo.email)
 

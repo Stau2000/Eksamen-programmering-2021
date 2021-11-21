@@ -13,6 +13,7 @@ const deleteUser = (e) => {
         localStorage.clear()
         
         window.location.replace("http://localhost:4000/");
+        alert("Din profil er nu slettet")
     })
 }
 init ()
