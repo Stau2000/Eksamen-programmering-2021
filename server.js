@@ -118,7 +118,15 @@ app.get("/min_profil", (req,res) => {
 //Slette profil
 //vi skal bruge et delete request til at slette profilen
 app.delete("/slet_profil", (req, res) => {
-    res.status(200).send("her skal man kunne slette en bruger")
+    const deleteInfo = localStorage.getItem("email", email)
+    
+    const loadedProfiles = loadProfileDatabase()
+
+    const profileWithEmail = loadedProfiles.profiles.filter((x) => x.email != deleteInfo.email)
+
+    loadedProfiles.profiles.splice(profileWithEmail);
+
+    saveProfileDatabase(loadedProfiles);
 });
 
 
