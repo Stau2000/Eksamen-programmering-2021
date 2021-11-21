@@ -6,7 +6,7 @@ const init = () => {
 const deleteUser = (e) => {
     e.preventDefault()
     fetch("http://localhost:4000/slet_profil/", {
-        method: "Delete"
+        method: "DELETE"
     }).then(content => {
         console.log(content)
         

@@ -18,8 +18,7 @@ const login = (e) => {
         else {
             throw `error with status ${response.status}`;
         }
-    })
-    .then(content => {
+    }).then(content => {
         console.log(content.email)
         localStorage.setItem("email", content.email);
         localStorage.setItem("username", content.username);
@@ -27,7 +26,7 @@ const login = (e) => {
         localStorage.setItem("city", content.city);
         localStorage.setItem("id", content.id);
         
-        window.location.replace("http://localhost:4000/");
+        //window.location.replace("http://localhost:4000/");
     })
 }
 init ()

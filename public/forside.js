@@ -1,6 +1,24 @@
-const id = localStorage.getItem("id", id)
-const email = localStorage.getItem("email", email)
-const username = localStorage.getItem("username", username)
-const phonenumber = localStorage.getItem("phonenumber", phonenumber)
-const city = localStorage.getItem("city", city)
+const content = document.getElementById("content");
 
+const getUsers = () => {
+    fetch(`http://localhost:4000/brugere`, {
+        method: 'GET'
+    }).then(resp => {
+        return resp.json()
+    }).then(data => {
+        content.innerHTML = JSON.stringify(data)
+    })
+
+}
+
+getUsers()
+console.log(localStorage.getItem("email"))
+
+const email = localStorage.getItem("email")
+if (email) {
+    const body = document.getElementsByTagName ("body")[0]
+    body.classList.add("logged_in");
+} else {
+    const body = document.getElementsByTagName ("body")[0]
+    body.classList.add("logged_out")
+}
