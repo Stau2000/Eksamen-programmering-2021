@@ -139,15 +139,7 @@ app.put("/opdater_profil/:email-:password-:name-:city-:address-:phonenumber", (r
 app.delete("/slet_profil", (req, res) => {
 
     const loadedProfiles = loadProfileDatabase()
-    const deleteInfo = {
-        id:`p${loadedProfiles.lastProfileID}`,
-        email: req.params.email,
-        password: req.params.password,
-        name: req.params.name,
-        city: req.params.city,
-        address: req.params.address,
-        phonenumber: req.params.phonenumber
-    };
+    const deleteInfo = {email: req.params.email};
 
     const profileWithEmail = loadedProfiles.profiles.filter((x) => x.email != deleteInfo.email)
 
