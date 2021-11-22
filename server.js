@@ -195,7 +195,18 @@ app.post("/opret_annonce/:email-:username-:city-:category-:image-:price-:descrip
 
 //________________________________________________________________________
 //Slet annonce
-//app.delete("/slet_annonce", (req, res) => {});
+app.delete("/slet_annonce/:category", (req, res) => {
+    
+    const loadedGoods = loadGoodDatabase()
+    const deleteInfo = {category: req.params.category};
+
+    const goodWithCategory = loadedGoods.goods.filter((x) => x.category != deleteInfo.category)
+
+    loadedGoods.goods.splice(goodWithCategory);
+
+    saveGoodDatabase(loadedGoods);
+    res.status(200).send(true)
+});
 
 //________________________________________________________________________
 
