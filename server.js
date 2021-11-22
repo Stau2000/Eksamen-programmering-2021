@@ -111,7 +111,26 @@ app.get("/min_profil", (req,res) => {
 //Opdater profil
 //vi skal bruge en put til at opdatere profilen
 //(skal også finde ud af hvordan den skal laves)
-//app.put("/opdater_profil/:id", (req, res) => {});
+app.put("/opdater_profil/:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
+    const loadedProfiles = loadProfileDatabase()
+
+    const updateInfo = {
+        id:`p${loadedProfiles.lastProfileID}`,
+        email: req.params.email,
+        password: req.params.password,
+        name: req.params.name,
+        city: req.params.city,
+        address: req.params.address,
+        phonenumber: req.params.phonenumber
+    };
+
+    const profileWithEmail = loadedProfiles.profiles.find((x) => updateInfo.email == x.email);
+    
+    loadedProfiles.profiles.splice(profileWithEmail, updateInfo);
+
+    saveProfileDatabase(loadedProfiles);
+    res.status(200).send(true)
+});
 
 //________________________________________________________________________
 
@@ -147,9 +166,6 @@ vi skal bruge en post til at oprette en annonce
 (Skal også finde ud af hvordan dette gøres)
 TANKE: hvis opret bruger løses er det samme tilgang som skal bruges her 
 */
-/*app.get('/opret_annonce', (req, res) => {
-    res.sendFile(__dirname + "/public/opret_vare/index.html");
-  });*/
 app.post("/opret_annonce/:email-:username-:city-:category-:image-:price-:description", (req, res) => {
     const loadedGoods = loadGoodDatabase()
     

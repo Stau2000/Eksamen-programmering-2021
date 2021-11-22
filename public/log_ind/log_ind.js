@@ -25,7 +25,7 @@ const login = (e) => {
         localStorage.setItem("phonenumber", content.phonenumber);
         localStorage.setItem("city", content.city);
         localStorage.setItem("id", content.id);
-        
+        localStorage.setItem("password", content.password)
         window.location.replace("http://localhost:4000/");
     })
 }
