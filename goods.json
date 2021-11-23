@@ -1,1 +1,1 @@
-{"lastGoodID":2,"goods":[{"id":"g2","email":"Emil2@live.dk","username":"Emil Stausbøl","city":"Lyngby","category":"skateboard","image":"nsdkvnskj","price":"dkn","description":"sdkjn"}]}
+{"lastGoodID":2,"goods":[{"id":"g1","userId":"p4","category":"skateboard","image":"123","price":"qwe","description":"sad"},{"id":"g2","userId":"p4","category":"sadasd","image":"123","price":"qwe","description":"sad"}]}

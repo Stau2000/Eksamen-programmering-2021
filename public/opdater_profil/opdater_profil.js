@@ -13,10 +13,10 @@ const init = () => {
     city.value = localStorage.getItem("city")
     address.value = localStorage.getItem("address")
     phonenumber.value = localStorage.getItem("phonenumber")
-    submitButton.addEventListener("click", createGood);
+    submitButton.addEventListener("click", updateUser);
 }
 
-const createGood = (e) => {
+const updateUser = (e) => {
     e.preventDefault()
     console.log(address.value)
     const id = localStorage.getItem("id")

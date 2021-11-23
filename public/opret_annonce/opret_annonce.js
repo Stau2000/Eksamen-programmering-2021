@@ -1,8 +1,5 @@
 
 const submitButton = document.getElementById("submit");
-const email = document.getElementById("email");
-const username = document.getElementById("name");
-const city = document.getElementById("city");
 const category = document.getElementById("category")
 const image = document.getElementById("image");
 const price = document.getElementById("price");
@@ -15,7 +12,9 @@ const init = () => {
 const createGood = (e) => {
     e.preventDefault()
     console.log(description.value)
-    fetch(`http://localhost:4000/opret_annonce/${email.value}-${username.value}-${city.value}-${category.value}-${image.value}-${price.value}-${description.value}`, {
+
+    const id = localStorage.getItem("id")
+    fetch(`http://localhost:4000/opret_annonce/${id}-${category.value}-${image.value}-${price.value}-${description.value}`, {
         method: "POST"
     })
 }

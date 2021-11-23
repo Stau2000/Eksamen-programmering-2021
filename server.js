@@ -168,15 +168,13 @@ vi skal bruge en post til at oprette en annonce
 (Skal også finde ud af hvordan dette gøres)
 TANKE: hvis opret bruger løses er det samme tilgang som skal bruges her 
 */
-app.post("/opret_annonce/:email-:username-:city-:category-:image-:price-:description", (req, res) => {
+app.post("/opret_annonce/:id-:category-:image-:price-:description", (req, res) => {
     const loadedGoods = loadGoodDatabase()
     
     loadedGoods.lastGoodID++;
     const newGood = {
         id:`g${loadedGoods.lastGoodID}`,
-        email: req.params.email,
-        username: req.params.username,
-        city: req.params.city,
+        userId: req.params.id,
         category: req.params.category,
         image: req.params.image,
         price: req.params.price,
