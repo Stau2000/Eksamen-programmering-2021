@@ -115,7 +115,7 @@ app.put("/opdater_profil/:email-:password-:name-:city-:address-:phonenumber", (r
     const loadedProfiles = loadProfileDatabase()
 
     const updateInfo = {
-        id:`p${loadedProfiles.lastProfileID}`,
+        id: req.params.id,
         email: req.params.email,
         password: req.params.password,
         name: req.params.name,
@@ -126,7 +126,11 @@ app.put("/opdater_profil/:email-:password-:name-:city-:address-:phonenumber", (r
 
     const profileWithEmail = loadedProfiles.profiles.find((x) => updateInfo.email == x.email);
     
-    loadedProfiles.profiles.splice(profileWithEmail, updateInfo);
+    //find ud af en måde at lægge updateInfo på profileWithEmails indexplads
+    //indexOf(profileWithEmail)
+
+    loadedProfiles.profiles.splice(profileWithEmail, 0, updateInfo)
+    loadedProfiles.profiles.splice(profileWithEmail);
 
     saveProfileDatabase(loadedProfiles);
     res.status(200).send(true)
@@ -136,14 +140,20 @@ app.put("/opdater_profil/:email-:password-:name-:city-:address-:phonenumber", (r
 
 //Slette profil
 //vi skal bruge et delete request til at slette profilen
-app.delete("/slet_profil", (req, res) => {
+//fordi at vores id er unikt til brugeren er vi sikker på at vi ikke sletter flere brugere
+app.delete("/slet_profil/:id", (req, res) => {
 
     const loadedProfiles = loadProfileDatabase()
-    const deleteInfo = {email: req.params.email};
+    const deleteInfo = {id: req.params.id};
 
-    const profileWithEmail = loadedProfiles.profiles.filter((x) => x.email != deleteInfo.email)
-
-    loadedProfiles.profiles.splice(profileWithEmail);
+    const profileWithId = loadedProfiles.profiles.find((x) => x.id == deleteInfo.id)
+    const indexOfProfileWithId = loadedProfiles.profiles.indexOf(profileWithId)
+    console.log("SLET!")
+    console.log(req.params.id)
+    console.log(profileWithId)
+    console.log(indexOfProfileWithId)
+    
+    loadedProfiles.profiles.splice(indexOfProfileWithId, 1);
 
     saveProfileDatabase(loadedProfiles);
     res.status(200).send(true)
