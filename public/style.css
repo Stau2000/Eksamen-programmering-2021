@@ -55,3 +55,7 @@ body.logged_out #create_ad{
 body.logged_out #myProfile{
   display: none;
 }
+
+table, th, td {
+    border: 1px solid black;
+  };

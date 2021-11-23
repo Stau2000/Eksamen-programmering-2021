@@ -159,6 +159,14 @@ app.delete("/slet_profil/:id", (req, res) => {
     res.status(200).send(true)
 });
 
+//________________________________________________________________________
+
+app.get("/brugere", (req, res) => {
+    const loadedProfiles = loadProfileDatabase()
+
+    res.status(200).json(loadedProfiles);
+})
+
 
 //________________________________________________________________________
 
@@ -208,6 +216,20 @@ app.delete("/slet_annonce/:category", (req, res) => {
     res.status(200).send(true)
 });
 
+//hent annonce
+app.get("/hent_annoncer/:category-:id", (req, res) => {
+    const loadedGoods = loadGoodDatabase()
+
+    if (req.params.category == "all") {
+        const goodsWithUserId = loadedGoods.goods.filter((x) => x.userId == req.params.id)
+        res.status(200).json(goodsWithUserId);
+    }
+    else {
+        const goodsWithUserId = loadedGoods.goods.filter((x) => x.userId == req.params.id && x.category == req.params.category)
+        res.status(200).json(goodsWithUserId)
+    }
+
+})
 //________________________________________________________________________
 
 //
