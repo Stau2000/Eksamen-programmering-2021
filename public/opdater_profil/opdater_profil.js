@@ -7,13 +7,20 @@ const address = document.getElementById("address");
 const phonenumber = document.getElementById("phonenumber");
 
 const init = () => {
+    email.value = localStorage.getItem("email")
+    password.value = localStorage.getItem("password")
+    username.value = localStorage.getItem("name")
+    city.value = localStorage.getItem("city")
+    address.value = localStorage.getItem("address")
+    phonenumber.value = localStorage.getItem("phonenumber")
     submitButton.addEventListener("click", createGood);
 }
 
 const createGood = (e) => {
     e.preventDefault()
     console.log(address.value)
-    fetch(`http://localhost:4000/opdater_profil/${email.value}-${password.value}-${username.value}-${city.value}-${address.value}-${phonenumber.value}`, {
+    const id = localStorage.getItem("id")
+    fetch(`http://localhost:4000/opdater_profil/${id}-${email.value}-${password.value}-${username.value}-${city.value}-${address.value}-${phonenumber.value}`, {
         method: "PUT"
     }).then
     

@@ -26,6 +26,7 @@ const login = (e) => {
         localStorage.setItem("city", content.city);
         localStorage.setItem("id", content.id);
         localStorage.setItem("password", content.password)
+        localStorage.setItem("address", content.address)
         window.location.replace("http://localhost:4000/");
     })
 }

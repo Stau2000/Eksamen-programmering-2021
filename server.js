@@ -111,7 +111,7 @@ app.get("/min_profil", (req,res) => {
 //Opdater profil
 //vi skal bruge en put til at opdatere profilen
 //(skal også finde ud af hvordan den skal laves)
-app.put("/opdater_profil/:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
+app.put("/opdater_profil/:id-:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
     const loadedProfiles = loadProfileDatabase()
 
     const updateInfo = {
