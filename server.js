@@ -123,14 +123,14 @@ app.put("/opdater_profil/:id-:email-:password-:name-:city-:address-:phonenumber"
         address: req.params.address,
         phonenumber: req.params.phonenumber
     };
-
-    const profileWithEmail = loadedProfiles.profiles.find((x) => updateInfo.email == x.email);
+    const profileWithId = loadedProfiles.profiles.find((x) => x.id == updateInfo.id)
+    const indexOfProfileWithId = loadedProfiles.profiles.indexOf(profileWithId)
+    console.log("OPDATER!")
+    console.log(req.params.id)
+    console.log(profileWithId)
+    console.log(indexOfProfileWithId)
     
-    //find ud af en måde at lægge updateInfo på profileWithEmails indexplads
-    //indexOf(profileWithEmail)
-
-    loadedProfiles.profiles.splice(profileWithEmail, 0, updateInfo)
-    loadedProfiles.profiles.splice(profileWithEmail);
+    loadedProfiles.profiles.splice(indexOfProfileWithId, 1, updateInfo);
 
     saveProfileDatabase(loadedProfiles);
     res.status(200).send(true)

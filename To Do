@@ -29,3 +29,8 @@ hvad er lavet og hvad ønskes gjort:
 
    Tilføj styling (CHECK)
    lav en log ud knap (CHECK)
+
+
+   NICE TO HAVE:
+   ikke kunne oprette en bruger med en eksisterende email
+   ikke kunne opdatere sin mail til en allerede eksisterende mail
