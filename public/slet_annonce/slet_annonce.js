@@ -13,7 +13,7 @@ const deleteGood = (e) => {
     })        
         
         window.location.replace("http://localhost:4000/min_profil");
-        alert(`${category} er nu slettet`)
+        alert(`${category.value} er nu slettet`)
 
 }
 init ()

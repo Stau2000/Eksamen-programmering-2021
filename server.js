@@ -206,15 +206,22 @@ app.post("/opret_annonce/:id-:category-:image-:price-:description", (req, res) =
 app.delete("/slet_annonce/:category", (req, res) => {
     
     const loadedGoods = loadGoodDatabase()
-    const deleteInfo = {category: req.params.category};
+    const deleteGoodInfo = {category: req.params.category};
 
-    const goodWithCategory = loadedGoods.goods.filter((x) => x.category != deleteInfo.category)
-
-    loadedGoods.goods.splice(goodWithCategory);
+    const goodWithId = loadedGoods.goods.find((x) => x.category == deleteGoodInfo.category)
+    const indexOfGoodWithId = loadedGoods.goods.indexOf(goodWithId)
+    console.log("SLET!")
+    console.log(req.params.category)
+    console.log(goodWithId)
+    console.log(indexOfGoodWithId)
+    
+    loadedGoods.goods.splice(indexOfGoodWithId, 1);
 
     saveGoodDatabase(loadedGoods);
     res.status(200).send(true)
 });
+
+//_________________________________________________________________________
 
 //hent annonce
 app.get("/hent_annoncer/:category-:id", (req, res) => {

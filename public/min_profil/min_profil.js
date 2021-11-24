@@ -13,13 +13,14 @@ const getProducts = (id) => {
                 <tr class="product">
                     <td>${product.category}</td>
                     <td>${product.userId}</td>
+                    <td>${product.image}</td>
                     <td>${product.price}</td>
                     <td>${product.description}</td>
                 </tr>
             `
         });
         table.innerHTML = htmlString
-
+        
         
         //JSON.stringify(data)
     })

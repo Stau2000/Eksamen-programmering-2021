@@ -1,1 +1,1 @@
-{"lastGoodID":3,"goods":[{"id":"g1","userId":"p4","category":"skateboard","image":"billede","price":"123 kr","description":"godt board"},{"id":"g2","userId":"p4","category":"bil","image":"billede","price":"123 kr","description":"god bil"},{"id":"g3","userId":"p4","category":"bil","image":"billede","price":"123 kr","description":"god bil"}]}
+{"lastGoodID":8,"goods":[{"id":"g6","userId":"p4","category":"cykel","image":"123","price":"123","description":"123"},{"id":"g8","userId":"p4","category":"skateboard","image":"123","price":"123","description":"123"}]}
