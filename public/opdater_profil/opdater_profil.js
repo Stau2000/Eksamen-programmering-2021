@@ -22,7 +22,6 @@ const updateUser = (e) => {
     const id = localStorage.getItem("id")
     fetch(`http://localhost:4000/opdater_profil/${id}-${email.value}-${password.value}-${username.value}-${city.value}-${address.value}-${phonenumber.value}`, {
         method: "PUT"
-    }).then
-    
+    })
 }
 init ()

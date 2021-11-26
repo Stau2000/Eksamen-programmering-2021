@@ -17,5 +17,6 @@ const createGood = (e) => {
     fetch(`http://localhost:4000/opret_annonce/${id}-${category.value}-${image.value}-${price.value}-${description.value}`, {
         method: "POST"
     })
+        window.location.replace("http://localhost:4000/");
 }
 init ()

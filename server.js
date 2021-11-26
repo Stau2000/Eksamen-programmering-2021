@@ -200,6 +200,9 @@ app.post("/opret_annonce/:id-:category-:image-:price-:description", (req, res) =
 //Opdatere annonce
 //vi skal her bruge et put request til at opdatere en annonce
 //(hvis "opdater profil" løses er det nok samme tilgang her)
+app.put("/opdater_annonce"), (req, res) => {
+    
+}
 
 //________________________________________________________________________
 //Slet annonce
