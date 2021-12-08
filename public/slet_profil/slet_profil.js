@@ -1,5 +1,6 @@
-const submitButton = document.getElementById("submit");
+const submitButton = document.getElementById("submit"); //henter "slet" knappen
 
+//sætter click funktionen igang
 const init = () => {
     submitButton.addEventListener("click", deleteUser);
 }
@@ -11,9 +12,9 @@ const deleteUser = (e) => {
     }).then(content => {
         console.log(content)
         
-        localStorage.clear()
+        localStorage.clear()// sletter profil fra localStorage
         
-        window.location.replace("http://localhost:4000/");
+        window.location.replace("http://localhost:4000/"); //henviser til homepage
         alert("Din profil er nu slettet")
     })
 }

@@ -1,4 +1,5 @@
 
+//henter inputfelter fra frontend
 const submitButton = document.getElementById("submit");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -7,6 +8,7 @@ const city = document.getElementById("city");
 const address = document.getElementById("address");
 const phonenumber = document.getElementById("phonenumber");
 
+//opretter forbindelse API'et og sender den indtastede data fra frontend
 const init = () => {
     submitButton.addEventListener("click", createProfile);
 }

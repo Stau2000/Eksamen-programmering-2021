@@ -79,9 +79,10 @@ app.post("/log_ud", (res, req) => {
 //Opret profil
 //vi skal bruge en POST til at oprette en bruger:
 app.post("/opret_bruger/:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
-    const loadedProfiles = loadProfileDatabase()
+    const loadedProfiles = loadProfileDatabase()//henter database
 
-    loadedProfiles.lastProfileID++;
+    
+    loadedProfiles.lastProfileID++; //summere 1 til ideet
     const newProfile = {
         id:`p${loadedProfiles.lastProfileID}`,
         email: req.params.email,
@@ -92,11 +93,11 @@ app.post("/opret_bruger/:email-:password-:name-:city-:address-:phonenumber", (re
         phonenumber: req.params.phonenumber
     };
 
-    loadedProfiles.profiles.push(newProfile);
+    loadedProfiles.profiles.push(newProfile); //pusher ny profil ind i profiles.json
 
     console.log(loadedProfiles);
 
-    saveProfileDatabase(loadedProfiles);
+    saveProfileDatabase(loadedProfiles); //gemmer den nye profil i databasen 
 });
 
 //________________________________________________________________________
@@ -114,6 +115,7 @@ app.get("/min_profil", (req,res) => {
 app.put("/opdater_profil/:id-:email-:password-:name-:city-:address-:phonenumber", (req, res) => {
     const loadedProfiles = loadProfileDatabase()
 
+    //Dette er de nye oplysninger som bliver fetched fra klienten
     const updateInfo = {
         id: req.params.id,
         email: req.params.email,
@@ -123,14 +125,12 @@ app.put("/opdater_profil/:id-:email-:password-:name-:city-:address-:phonenumber"
         address: req.params.address,
         phonenumber: req.params.phonenumber
     };
+
+    //finder profilen og index med det unikke id
     const profileWithId = loadedProfiles.profiles.find((x) => x.id == updateInfo.id)
     const indexOfProfileWithId = loadedProfiles.profiles.indexOf(profileWithId)
-    console.log("OPDATER!")
-    console.log(req.params.id)
-    console.log(profileWithId)
-    console.log(indexOfProfileWithId)
     
-    loadedProfiles.profiles.splice(indexOfProfileWithId, 1, updateInfo);
+    loadedProfiles.profiles.splice(indexOfProfileWithId, 1, updateInfo); //splicer og erstater med de opdatede oplysninger
 
     saveProfileDatabase(loadedProfiles);
     res.status(200).send(true)
@@ -140,20 +140,16 @@ app.put("/opdater_profil/:id-:email-:password-:name-:city-:address-:phonenumber"
 
 //Slette profil
 //vi skal bruge et delete request til at slette profilen
-//fordi at vores id er unikt til brugeren er vi sikker på at vi ikke sletter flere brugere
+//fordi at vores id er unikt til brugeren er vi sikker på at vi ikke sletter flere brugere på samme tid
 app.delete("/slet_profil/:id", (req, res) => {
 
     const loadedProfiles = loadProfileDatabase()
-    const deleteInfo = {id: req.params.id};
+    const deleteInfo = {id: req.params.id}; //finder id'ets position i databasen
 
-    const profileWithId = loadedProfiles.profiles.find((x) => x.id == deleteInfo.id)
-    const indexOfProfileWithId = loadedProfiles.profiles.indexOf(profileWithId)
-    console.log("SLET!")
-    console.log(req.params.id)
-    console.log(profileWithId)
-    console.log(indexOfProfileWithId)
+    const profileWithId = loadedProfiles.profiles.find((x) => x.id == deleteInfo.id) //finder brugeren som ønsker sin profil slettet i databasen 
+    const indexOfProfileWithId = loadedProfiles.profiles.indexOf(profileWithId) //finder index for profileWithId
     
-    loadedProfiles.profiles.splice(indexOfProfileWithId, 1);
+    loadedProfiles.profiles.splice(indexOfProfileWithId, 1); //splicer den fundne profil fra
 
     saveProfileDatabase(loadedProfiles);
     res.status(200).send(true)
@@ -170,16 +166,14 @@ app.get("/brugere", (req, res) => {
 
 //________________________________________________________________________
 
-/*
-OPRET ANNONCE
-vi skal bruge en post til at oprette en annonce
-(Skal også finde ud af hvordan dette gøres)
-TANKE: hvis opret bruger løses er det samme tilgang som skal bruges her 
-*/
+
+//OPRET ANNONCE
+//vi skal bruge en post til at oprette en annonce
+
 app.post("/opret_annonce/:id-:category-:image-:price-:description", (req, res) => {
-    const loadedGoods = loadGoodDatabase()
+    const loadedGoods = loadGoodDatabase() //henter alt data fra vare databasen
     
-    loadedGoods.lastGoodID++;
+    loadedGoods.lastGoodID++; //tillægger 1 til lastGoodID
     const newGood = {
         id:`g${loadedGoods.lastGoodID}`,
         userId: req.params.id,
@@ -189,19 +183,18 @@ app.post("/opret_annonce/:id-:category-:image-:price-:description", (req, res) =
         description: req.params.description
     };
 
-    loadedGoods.goods.push(newGood);
+    loadedGoods.goods.push(newGood); //pusher en vare i varedatabasen
 
     console.log(loadedGoods);
 
-    saveGoodDatabase(loadedGoods);
+    saveGoodDatabase(loadedGoods); //gemmer alt datan med eventuelle ændringer
 });
 //________________________________________________________________________
 
 //Opdatere annonce
 //vi skal her bruge et put request til at opdatere en annonce
-//(hvis "opdater profil" løses er det nok samme tilgang her)
-app.put("/opdater_annonce"), (req, res) => {
-    
+app.put("/opdater_annonce/:id"), (req, res) => {
+    res.status(200).send(true)
 }
 
 //________________________________________________________________________
@@ -211,14 +204,14 @@ app.delete("/slet_annonce/:category", (req, res) => {
     const loadedGoods = loadGoodDatabase()
     const deleteGoodInfo = {category: req.params.category};
 
-    const goodWithId = loadedGoods.goods.find((x) => x.category == deleteGoodInfo.category)
-    const indexOfGoodWithId = loadedGoods.goods.indexOf(goodWithId)
+    const goodWithCategory = loadedGoods.goods.find((x) => x.category == deleteGoodInfo.category) //finder vare med samme kategori
+    const indexOfGoodWithId = loadedGoods.goods.indexOf(goodWithCategory) //finder dets index
     console.log("SLET!")
     console.log(req.params.category)
     console.log(goodWithId)
     console.log(indexOfGoodWithId)
     
-    loadedGoods.goods.splice(indexOfGoodWithId, 1);
+    loadedGoods.goods.splice(indexOfGoodWithId, 1); //splicer den fundne vare
 
     saveGoodDatabase(loadedGoods);
     res.status(200).send(true)

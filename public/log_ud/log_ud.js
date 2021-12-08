@@ -15,8 +15,21 @@ const logOut = (e) => {
         localStorage.removeItem("phonenumber", content.phonenumber);
         localStorage.removeItem("city", content.city);
         localStorage.removeItem("id", content.id);
-        
+        localStorage.removeItem("address", content.address);
+        localStorage.removeItem("password", content.password);
         window.location.replace("http://localhost:4000/");
     })
 }
 init ()
+
+
+
+
+
+
+
+
+
+
+
+

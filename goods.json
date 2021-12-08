@@ -1,1 +1,1 @@
-{"lastGoodID":6,"goods":[{"id":"g3","userId":"p1","category":"bil","image":"123","price":"123","description":"123"},{"id":"g4","userId":"p1","category":"skateboard","image":"random","price":"aeds","description":"asd"},{"id":"g5","userId":"undefined","category":"bil","image":"123","price":"123","description":"123"},{"id":"g6","userId":"undefined","category":"skateboard","image":"123","price":"wqe","description":"qwe"}]}
+{"lastGoodID":2,"goods":[{"id":"g2","userId":"p2","category":"skateboard","image":"billede","price":"500kr","description":"god stand"}]}
